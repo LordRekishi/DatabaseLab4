@@ -33,7 +33,7 @@ public class App {
 
             insertDemoProducts();
 
-            System.out.println("First time Setup completed!");
+            System.out.println("\nFirst time Setup completed!");
         }
 
         System.out.println("\nRunning Tests...");
@@ -46,12 +46,35 @@ public class App {
         test6();
         test7();
         test8();
+        test9();
+        test10();
 
         System.out.println("""
+                
                 All Tests Completed Successfully!
                                 
                 Program finished, thank you!
                 Exiting...""");
+    }
+
+    private static void test10() {
+        System.out.println("\nTest 10: Delete book with ID = 1 in Book table");
+        System.out.println("Books before Delete");
+        bookDao.getAll().forEach(System.out::println);
+        bookDao.delete(bookDao.getByID(1));
+        System.out.println("Books after Delete");
+        bookDao.getAll().forEach(System.out::println);
+        System.out.println("Test 10 completed!");
+    }
+
+    private static void test9() {
+        System.out.println("\nTest 9: Update book with ID = 1, price 199 -> 399 in Book table");
+        Book temp = bookDao.getByID(1);
+        System.out.println("Book before Update: " + temp.toString());
+        temp.setPrice(399);
+        bookDao.update(temp);
+        System.out.println("Book after Update: " + temp);
+        System.out.println("Test 9 completed!");
     }
 
     private static void test8() {
@@ -105,10 +128,15 @@ public class App {
     private static void insertDemoProducts() {
         System.out.println("\nInserting Books...");
         Book book1 = new Book("Dune", "Frank Herbert", 199, "Science Fiction", Date.valueOf("1990-01-01"), true);
+        bookDao.insert(book1);
         Book book2 = new Book("Foundation Trilogy", "Isaac Asimov", 399, "Science Fiction", Date.valueOf("2020-03-01"), true);
+        bookDao.insert(book2);
         Book book3 = new Book("Beautiful World, Where Are You", "Sally Rooney", 99, "Fiction", Date.valueOf("2021-09-07"), false);
+        bookDao.insert(book3);
         Book book4 = new Book("Inferno i snö", "Marie Bengts", 499, "Crime", Date.valueOf("2021-10-05"), true);
+        bookDao.insert(book4);
         Book book5 = new Book("Nordiska väsen", "Johan Egerkrans", 299, "Non-Fiction", Date.valueOf("2013-08-05"), false);
+        bookDao.insert(book5);
         System.out.println("Books inserted!");
     }
 }
