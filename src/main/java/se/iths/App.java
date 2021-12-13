@@ -34,6 +34,10 @@ public class App {
             insertDemoProducts();
 
             System.out.println("\nFirst time Setup completed!");
+        } else {
+            Book book1 = new Book("Dune", "Frank Herbert", 199, "Science Fiction", Date.valueOf("1990-01-01"), true);
+            book1.setBookId(1);
+            bookDao.insert(book1);
         }
 
         System.out.println("\nRunning Tests...");
