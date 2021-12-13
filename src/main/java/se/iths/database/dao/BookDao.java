@@ -11,4 +11,5 @@ public interface BookDao extends Dao<Book> {
     List<Book> getByGenre(String genre);
     List<Book> getByReleaseDate(Date min, Date max);
     List<Book> getIfInStock();
+    void truncateTable();
 }

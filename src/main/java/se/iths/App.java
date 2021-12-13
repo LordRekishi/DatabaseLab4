@@ -31,13 +31,12 @@ public class App {
         if (scanner.nextLine().equalsIgnoreCase("Y")) {
             System.out.println("\nRunning First time Setup...");
 
-            insertDemoProducts();
+            insertDemoBooks();
 
             System.out.println("\nFirst time Setup completed!");
         } else {
-            Book book1 = new Book("Dune", "Frank Herbert", 199, "Science Fiction", Date.valueOf("1990-01-01"), true);
-            book1.setBookId(1);
-            bookDao.insert(book1);
+            bookDao.truncateTable();
+            insertBooks();
         }
 
         System.out.println("\nRunning Tests...");
@@ -129,8 +128,13 @@ public class App {
         System.out.println("Test 1 completed!");
     }
 
-    private static void insertDemoProducts() {
+    private static void insertDemoBooks() {
         System.out.println("\nInserting Books...");
+        insertBooks();
+        System.out.println("Books inserted!");
+    }
+
+    private static void insertBooks() {
         Book book1 = new Book("Dune", "Frank Herbert", 199, "Science Fiction", Date.valueOf("1990-01-01"), true);
         bookDao.insert(book1);
         Book book2 = new Book("Foundation Trilogy", "Isaac Asimov", 399, "Science Fiction", Date.valueOf("2020-03-01"), true);
@@ -141,6 +145,5 @@ public class App {
         bookDao.insert(book4);
         Book book5 = new Book("Nordiska väsen", "Johan Egerkrans", 299, "Non-Fiction", Date.valueOf("2013-08-05"), false);
         bookDao.insert(book5);
-        System.out.println("Books inserted!");
     }
 }

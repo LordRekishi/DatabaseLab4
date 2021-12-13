@@ -89,6 +89,14 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
+    public void truncateTable() {
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Book b").executeUpdate();
+        em.createNativeQuery("ALTER TABLE Book AUTO_INCREMENT = 1").executeUpdate();
+        em.getTransaction().commit();
+    }
+
+    @Override
     public List<Book> getAll() {
         return em.createQuery("SELECT b FROM Book b", Book.class).getResultList();
     }
