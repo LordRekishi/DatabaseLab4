@@ -23,7 +23,7 @@ public class App {
                 INSTRUCTIONS:
                 1. Connect to your LOCALHOST server using Port 3306
                 2. Change the USER and PASSWORD in the src/main/resources/META-INF/persistence.xml file
-                2. Create a database called DatabaseLab4 in MySQL Workbench
+                3. Create a database called DatabaseLab4 in MySQL Workbench
                 GOOD WORK!
                                 
                 Is this your first time running this program? (Y/N)""");
